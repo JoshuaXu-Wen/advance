@@ -1,5 +1,6 @@
 targetScope = 'subscription'
-
+@description('the location storing the policy meta data')
+param location string = 'westus'
 var policyDefinitionName = 'DenyFandGSeriesVMs'
 var policyAssignmentName = 'DenyFandGSeriesVMs'
 
@@ -47,15 +48,15 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2020-09-01'
         ]
       }
       then: {
-        effect: 'Den'
+        effect: 'Deny'
       }
     }
   }
 }
 
-resource policyAssignment 'Microsoft.Authorization/policyAssignments@2020-09-01' = {
+resource policyAssignment 'Microsoft.Authorization/policyAssignments@2021-06-01' = {
   name: policyAssignmentName
-  // location: location
+  location: location
   identity: {
     type: 'SystemAssigned'
   }
@@ -85,4 +86,3 @@ resource policyAssignment 'Microsoft.Authorization/policyAssignments@2020-09-01'
     // ]
   }
 }
-
