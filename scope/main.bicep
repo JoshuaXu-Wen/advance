@@ -35,11 +35,11 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2020-09-01'
           {
             anyOf: [
               {
-                field: 'Microsoft.Compute/virtualMachine/sku.name'
+                field: 'Microsoft.Compute/virtualMachines/sku.name'
                 like: 'Standard_F*'
               }
               {
-                field: 'Microsoft.Compute/virtualMachine/sku.name'
+                field: 'Microsoft.Compute/virtualMachines/sku.name'
                 like: 'Standard_G*'
               }
             ]
