@@ -1,0 +1,98 @@
+name: manage-azure-policy-2fdb40f0
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/Enforce_naming_convention_-_App_Services_fbfd0a71-3727-4e2b-8d43-a1ab5e5fbafb/**'
+#      - 'policies/Enforce_naming_convention_-_Disks_f7ad5de6-c347-44ec-94cf-7727bc55d370/**'
+#      - 'policies/Enforce_naming_convention_-_Network_Interfaces_e3b04d50-0eb9-4ab4-83b5-629fbc79ef3a/**'
+#      - 'policies/Require_a_tag_on_Resources_-_creator_f0a276e3-9c79-4362-a75c-f240149b63e5/**'
+#      - 'policies/Enforce_naming_convention_-_Public_IP_Addresses_e3b04d50-0eb9-4ab4-83b5-629fbc79ef2f/**'
+#      - 'policies/Require_a_tag_on_Resources_-_creationDate_e28d79d1-513a-437e-9cfb-9d6d09c779cb/**'
+#      - 'policies/Enforce_naming_convention_-_Virtual_Machines_dc182b05-f716-4476-941d-a536338f71ba/**'
+#      - 'policies/Enforce_naming_convention_-_Virtual_Networks_d7697947-6fe0-4df3-9828-24cb207cd010/**'
+#      - 'policies/Enforce_naming_convention_-_Azure_SQL_Databases_d525c634-08ec-4016-bcb3-298d0b972ca6/**'
+#      - 'policies/Enforce_naming_convention_-_App_Service_Plans_cb134af2-6f27-4246-9b1d-c420450ba0db/**'
+#      - 'policies/Enforce_naming_convention_-_Logic_Apps_cb134af2-6f27-4246-9b1d-c420450ba0e6/**'
+#      - 'policies/Require_a_tag_on_Resources_-_businessOwner_ca484f03-80e9-4938-81fd-bee1ceab9def/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_businessOwner_a9f47984-1ac1-439b-ae1e-a32ee4264beb/**'
+#      - 'policies/Enforce_naming_convention_-_Azure_SQL_Servers_a86a0496-71b7-4680-93f0-75563571c6c6/**'
+#      - 'policies/Enforce_naming_convention_-_Network_Security_Groups_97008d0d-e88c-4c53-84ed-56900655251a/**'
+#      - 'policies/Allowed_locations_for_resource_groups_-_MyTransport_86113082-78a9-4b96-a4e4-7086a6d5e215/**'
+#      - 'policies/Allowed_locations_-_MyTransport_86113082-78a9-4b96-a4e4-7086a6d5e1f4/**'
+#      - 'policies/Subnets_should_be_associated_with_a_Network_Security_Group_-_MyTransport_86113082-78a9-4b96-a4e4-7086a6d5e1ce/**'
+#      - 'policies/Require_a_tag_on_Resources_-description_823ed4e7-87d5-4027-99d6-124dfec81017/**'
+#      - 'policies/Require_a_tag_on_Resources_-_environment_823ed4e7-87d5-4027-99d6-124dfec81006/**'
+#      - 'policies/Enforce_naming_convention_-_Storage_accounts_2f9b2a8c-4762-4f88-9591-b99f9c076d90/**'
+#      - 'policies/Enforce_naming_convention_-_Resource_Groups_5fc0349f-5590-41cb-912a-34da9f6d8a23/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_description_25a48a52-956d-4c64-9632-8ed7380b726a/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_environment_25a48a52-956d-4c64-9632-8ed7380b7259/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_classification_25a48a52-956d-4c64-9632-8ed7380b7236/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_managedBy_25a48a52-956d-4c64-9632-8ed7380b7215/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_costCode_25a48a52-956d-4c64-9632-8ed7380b7204/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_maintenanceWindow_25a48a52-956d-4c64-9632-8ed7380b71f3/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_creator_25a48a52-956d-4c64-9632-8ed7380b71d1/**'
+#      - 'policies/Require_a_tag_on_resource_groups_-_creationDate_25a48a52-956d-4c64-9632-8ed7380b71e2/**'
+#      - 'policies/Require_a_tag_on_Resources_-_classification_21b16718-a96d-4d38-97b9-f5fc2d872ff5/**'
+#      - 'policies/Require_a_tag_on_Resources_-_costCode_21b16718-a96d-4d38-97b9-f5fc2d872fd3/**'
+#      - 'policies/Require_a_tag_on_Resources_-_managedBy_21b16718-a96d-4d38-97b9-f5fc2d872fe4/**'
+#      - 'policies/Require_a_tag_on_Resources_-_maintenanceWindow_21b16718-a96d-4d38-97b9-f5fc2d872fc2/**'
+#      - .github/workflows/manage-azure-policy-2fdb40f0.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_2fdb40f0}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/Enforce_naming_convention_-_App_Services_fbfd0a71-3727-4e2b-8d43-a1ab5e5fbafb/**
+          policies/Enforce_naming_convention_-_Disks_f7ad5de6-c347-44ec-94cf-7727bc55d370/**
+          policies/Enforce_naming_convention_-_Network_Interfaces_e3b04d50-0eb9-4ab4-83b5-629fbc79ef3a/**
+          policies/Require_a_tag_on_Resources_-_creator_f0a276e3-9c79-4362-a75c-f240149b63e5/**
+          policies/Enforce_naming_convention_-_Public_IP_Addresses_e3b04d50-0eb9-4ab4-83b5-629fbc79ef2f/**
+          policies/Require_a_tag_on_Resources_-_creationDate_e28d79d1-513a-437e-9cfb-9d6d09c779cb/**
+          policies/Enforce_naming_convention_-_Virtual_Machines_dc182b05-f716-4476-941d-a536338f71ba/**
+          policies/Enforce_naming_convention_-_Virtual_Networks_d7697947-6fe0-4df3-9828-24cb207cd010/**
+          policies/Enforce_naming_convention_-_Azure_SQL_Databases_d525c634-08ec-4016-bcb3-298d0b972ca6/**
+          policies/Enforce_naming_convention_-_App_Service_Plans_cb134af2-6f27-4246-9b1d-c420450ba0db/**
+          policies/Enforce_naming_convention_-_Logic_Apps_cb134af2-6f27-4246-9b1d-c420450ba0e6/**
+          policies/Require_a_tag_on_Resources_-_businessOwner_ca484f03-80e9-4938-81fd-bee1ceab9def/**
+          policies/Require_a_tag_on_resource_groups_-_businessOwner_a9f47984-1ac1-439b-ae1e-a32ee4264beb/**
+          policies/Enforce_naming_convention_-_Azure_SQL_Servers_a86a0496-71b7-4680-93f0-75563571c6c6/**
+          policies/Enforce_naming_convention_-_Network_Security_Groups_97008d0d-e88c-4c53-84ed-56900655251a/**
+          policies/Allowed_locations_for_resource_groups_-_MyTransport_86113082-78a9-4b96-a4e4-7086a6d5e215/**
+          policies/Allowed_locations_-_MyTransport_86113082-78a9-4b96-a4e4-7086a6d5e1f4/**
+          policies/Subnets_should_be_associated_with_a_Network_Security_Group_-_MyTransport_86113082-78a9-4b96-a4e4-7086a6d5e1ce/**
+          policies/Require_a_tag_on_Resources_-description_823ed4e7-87d5-4027-99d6-124dfec81017/**
+          policies/Require_a_tag_on_Resources_-_environment_823ed4e7-87d5-4027-99d6-124dfec81006/**
+          policies/Enforce_naming_convention_-_Storage_accounts_2f9b2a8c-4762-4f88-9591-b99f9c076d90/**
+          policies/Enforce_naming_convention_-_Resource_Groups_5fc0349f-5590-41cb-912a-34da9f6d8a23/**
+          policies/Require_a_tag_on_resource_groups_-_description_25a48a52-956d-4c64-9632-8ed7380b726a/**
+          policies/Require_a_tag_on_resource_groups_-_environment_25a48a52-956d-4c64-9632-8ed7380b7259/**
+          policies/Require_a_tag_on_resource_groups_-_classification_25a48a52-956d-4c64-9632-8ed7380b7236/**
+          policies/Require_a_tag_on_resource_groups_-_managedBy_25a48a52-956d-4c64-9632-8ed7380b7215/**
+          policies/Require_a_tag_on_resource_groups_-_costCode_25a48a52-956d-4c64-9632-8ed7380b7204/**
+          policies/Require_a_tag_on_resource_groups_-_maintenanceWindow_25a48a52-956d-4c64-9632-8ed7380b71f3/**
+          policies/Require_a_tag_on_resource_groups_-_creator_25a48a52-956d-4c64-9632-8ed7380b71d1/**
+          policies/Require_a_tag_on_resource_groups_-_creationDate_25a48a52-956d-4c64-9632-8ed7380b71e2/**
+          policies/Require_a_tag_on_Resources_-_classification_21b16718-a96d-4d38-97b9-f5fc2d872ff5/**
+          policies/Require_a_tag_on_Resources_-_costCode_21b16718-a96d-4d38-97b9-f5fc2d872fd3/**
+          policies/Require_a_tag_on_Resources_-_managedBy_21b16718-a96d-4d38-97b9-f5fc2d872fe4/**
+          policies/Require_a_tag_on_Resources_-_maintenanceWindow_21b16718-a96d-4d38-97b9-f5fc2d872fc2/**

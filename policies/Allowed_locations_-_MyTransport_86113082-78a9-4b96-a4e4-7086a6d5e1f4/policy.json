@@ -1,0 +1,56 @@
+{
+ "properties": {
+  "displayName": "Allowed locations - MyTransport",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
+  "metadata": {
+   "category": "General",
+   "createdBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "createdOn": "2022-07-12T22:30:49.6277504Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "listOfAllowedLocations": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Allowed locations",
+     "description": "The list of locations that can be specified when deploying resources.",
+     "strongType": "location"
+    },
+    "allowedValues": [
+     "australiaeast",
+     "australiasoutheast"
+    ],
+    "defaultValue": [
+     "australiaeast"
+    ]
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "location",
+      "notIn": "[parameters('listOfAllowedLocations')]"
+     },
+     {
+      "field": "location",
+      "notEquals": "global"
+     },
+     {
+      "field": "type",
+      "notEquals": "Microsoft.AzureActiveDirectory/b2cDirectories"
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/86113082-78a9-4b96-a4e4-7086a6d5e1f4",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "86113082-78a9-4b96-a4e4-7086a6d5e1f4"
+}

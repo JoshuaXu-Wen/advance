@@ -1,0 +1,86 @@
+{
+ "properties": {
+  "displayName": "Enforce naming convention - App Services",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "category": "nameConvention",
+   "createdBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "createdOn": "2022-07-13T01:59:33.5795698Z",
+   "updatedBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "updatedOn": "2022-07-13T02:16:13.7369649Z"
+  },
+  "parameters": {
+   "resourceIdentifier": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Resource Identifier",
+     "description": "The first letters that identify the resource, according naming standards. In example, for network interfaces, 'ni', or for publicly addressed resources a unique company identifier e.g. cor Fabrikam 'fab'"
+    },
+    "defaultValue": "MyTransport"
+   },
+   "resourceRegion": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Region short name string",
+     "description": "A string containing region  for the naming convention, i.e., 'mel' or 'syd'. This will be concatenated as 'Resource Identifier'+'Resource Region'+'Subscription'"
+    },
+    "allowedValues": [
+     "syd",
+     "me1"
+    ],
+    "defaultValue": "syd"
+   },
+   "subscription": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Subscription short name",
+     "description": "A string containing subscription for the naming convention, i.e., 'bnd', 'cor', 'prd', 'stg', 'tst', or 'dev'. This will be concatenated as 'Resource Identifier'+'Resource Region'+'Subscription'"
+    },
+    "allowedValues": [
+     "bnd",
+     "cor",
+     "prd",
+     "stg",
+     "tst",
+     "dev"
+    ],
+    "defaultValue": "bnd"
+   },
+   "matchClause": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Match Clause",
+     "description": "A string containing the match clause that goes in the end of the formed string, i.e., '-*'. This will be concatenated as 'Resource Identifier'+'Resource Region'+'Subscription'+'MatchClause'"
+    },
+    "defaultValue": "-*"
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Web/sites"
+     },
+     {
+      "not": {
+       "anyOf": [
+        {
+         "field": "name",
+         "like": "[concat(parameters('resourceIdentifier'), '-', parameters('resourceRegion'), '-', parameters('subscription'), parameters('matchClause'))]"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/fbfd0a71-3727-4e2b-8d43-a1ab5e5fbafb",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "fbfd0a71-3727-4e2b-8d43-a1ab5e5fbafb"
+}

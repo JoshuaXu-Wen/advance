@@ -1,0 +1,37 @@
+{
+ "properties": {
+  "displayName": "Require a tag on Resources - creationDate",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "Enforces existence of a tag. Does not apply to resource groups.",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "createdOn": "2022-07-12T22:44:01.2754737Z",
+   "updatedBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "updatedOn": "2022-07-12T22:44:56.083545Z"
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    },
+    "defaultValue": "creationDate"
+   }
+  },
+  "policyRule": {
+   "if": {
+    "field": "[concat('tags[', parameters('tagName'), ']')]",
+    "exists": "false"
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/e28d79d1-513a-437e-9cfb-9d6d09c779cb",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "e28d79d1-513a-437e-9cfb-9d6d09c779cb"
+}
