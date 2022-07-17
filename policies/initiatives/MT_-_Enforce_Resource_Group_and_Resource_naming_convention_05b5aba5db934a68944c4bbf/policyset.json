@@ -1,0 +1,102 @@
+{
+ "properties": {
+  "displayName": "MT - Enforce Resource Group and Resource naming convention",
+  "policyType": "Custom",
+  "description": "",
+  "metadata": {
+   "createdBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "createdOn": "2022-07-13T02:42:09.2415082Z",
+   "updatedBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "updatedOn": "2022-07-13T03:56:04.5707721Z"
+  },
+  "parameters": {},
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Resource Groups_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/5fc0349f-5590-41cb-912a-34da9f6d8a23",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Network Security Groups_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/97008d0d-e88c-4c53-84ed-56900655251a",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Azure SQL Servers_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/a86a0496-71b7-4680-93f0-75563571c6c6",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - App Service Plans_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/cb134af2-6f27-4246-9b1d-c420450ba0db",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Logic Apps_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/cb134af2-6f27-4246-9b1d-c420450ba0e6",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Azure SQL Databases_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/d525c634-08ec-4016-bcb3-298d0b972ca6",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention -  Virtual Networks_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/d7697947-6fe0-4df3-9828-24cb207cd010",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Virtual Machines_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/dc182b05-f716-4476-941d-a536338f71ba",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention -  Public IP Addresses_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/e3b04d50-0eb9-4ab4-83b5-629fbc79ef2f",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention -  Network Interfaces_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/e3b04d50-0eb9-4ab4-83b5-629fbc79ef3a",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Disks_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/f7ad5de6-c347-44ec-94cf-7727bc55d370",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - App Services_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/fbfd0a71-3727-4e2b-8d43-a1ab5e5fbafb",
+    "parameters": {},
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Enforce naming convention - Storage accounts_1",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policyDefinitions/2f9b2a8c-4762-4f88-9591-b99f9c076d90",
+    "parameters": {
+     "resourceIdentifier": {
+      "value": "MyTransport"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policySetDefinitions/05b5aba5db934a68944c4bbf",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "05b5aba5db934a68944c4bbf"
+}

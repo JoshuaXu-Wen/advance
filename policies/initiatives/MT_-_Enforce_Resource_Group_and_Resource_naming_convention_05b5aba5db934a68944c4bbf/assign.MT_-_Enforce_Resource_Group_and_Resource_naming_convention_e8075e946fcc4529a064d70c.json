@@ -1,0 +1,26 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "properties": {
+  "displayName": "MT - Enforce Resource Group and Resource naming convention",
+  "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/d91f6271-86c4-4c72-a9a6-6fc1292353b7/providers/Microsoft.Authorization/policySetDefinitions/05b5aba5db934a68944c4bbf",
+  "scope": "/subscriptions/93376a2d-5b23-4671-abc3-a9c8a734d958",
+  "notScopes": [],
+  "parameters": {},
+  "description": "",
+  "metadata": {
+   "assignedBy": "Rik Roberts",
+   "parameterScopes": {},
+   "createdBy": "a16419d2-a70d-4ea1-8456-c6f8542bb852",
+   "createdOn": "2022-07-14T02:28:10.856412Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "enforcementMode": "DoNotEnforce"
+ },
+ "id": "/subscriptions/93376a2d-5b23-4671-abc3-a9c8a734d958/providers/Microsoft.Authorization/policyAssignments/e8075e946fcc4529a064d70c",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "e8075e946fcc4529a064d70c"
+}
